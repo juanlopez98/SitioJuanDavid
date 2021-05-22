@@ -89,6 +89,7 @@ class clsconfiguracionEntidad
   public function obtenerDatosCargados()
   
   {
+
  
    $datosCargados = array();
     $this->valoresCargados = array();
@@ -119,6 +120,27 @@ return $datosCargados;
 public function obtenerValorCargado($indice)
 {
   return $this->valoresCargados[$indice];
+}
+
+
+public function decriptServidor($value)
+{
+  $this->Servidor =$this->objClsEncript->desencriptar(trim($value));
+}
+public function decriptBasedeDatos($value)
+{
+  $this->BasedeDatos =$this->objClsEncript->desencriptar(trim($value));
+
+}
+public function decriptUsuario($value)
+{
+  $this->Usuario=$this->objClsEncript->desencriptar(trim($value));
+  
+}
+public function decriptClave($value)
+{
+  $this->Clave =$this->objClsEncript->desencriptar(trim($value));
+  
 }
  
 }

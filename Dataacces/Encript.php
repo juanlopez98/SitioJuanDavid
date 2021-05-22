@@ -31,6 +31,16 @@ class clsEncript
         md5($value);*/
     }
 
+    public function desencriptar($value)
+    {
+        $salida = FALSE;
+        $llave = hash('sha512', LLAVE);
+        $vector = substr(hash('sha512', VECTOR), 0, 16);
+        $value = base64_decode($value);
+        $salida =openssl_decrypt($value, METODO, $llave, 0,  $vector);
+        return $salida;
+
+    }
 }
 
 ?>

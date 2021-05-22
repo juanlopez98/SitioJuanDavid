@@ -1,5 +1,7 @@
 <?php
+include_once('../Entidades/Configuracion.php');
 class clsConfiguracion
+
 {
   //lo esencial que los valores sean privados
    private $nombre = null, $ruta = null, $rutaCompleta = null;
@@ -27,26 +29,27 @@ class clsConfiguracion
     {
        if( $this->validarExistenciaArchivo())
        {
-        echo "<br\>metodo dice que si ";
+        
         $this->modificarArchivo($objClasConfiguracionEntidad);
        }
        else
        {
-           echo "<br\>metodo dice que no ";
+           
            $this->crearArchivo($objClasConfiguracionEntidad);
 
        }
+      // $this->leerConfiguracion();
     }
     private function validarExistenciaArchivo()
     {
         if(file_exists($this->rutaCompleta))
         {
-            echo"El archivo: ".$this->nombre."Existe en la ruta: ". $this->ruta;
+           
             return true;
         }
         else
         {
-            echo"El archivo: ".$this->nombre."No existe en la ruta: ". $this->ruta;
+           
             return false;
         }
     }
@@ -104,6 +107,74 @@ class clsConfiguracion
                 fclose($archivo);
             }
 
+        }
+
+        public function leerConfiguracion()
+        {
+           
+
+            $objClasConfiguracionEntidad = new clsconfiguracionEntidad();
+            $arrayLineasArchivo = file($this->rutaCompleta);
+            for ($j=0; $j < count($arrayLineasArchivo) ; $j++) { 
+                $linea =$arrayLineasArchivo[$j];
+                $pos = strpos ($linea,"server");
+                if($pos !==false)
+                {
+                   
+                    $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
+                    if(count($caracteres) >= 2)
+                    {
+                        $objClasConfiguracionEntidad->decriptServidor($caracteres[1]);
+                    }
+                   
+                }
+                else
+                {
+                    $pos = strpos ($linea,"BD");
+                    if($pos !==false) 
+                    {
+                        $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
+                        if(count($caracteres) >= 2)
+                        {
+                            $objClasConfiguracionEntidad->decriptBasedeDatos($caracteres[1]);
+                        }
+                      
+                    }
+                    else
+                    {
+                        $pos = strpos ($linea,"User");
+                    if($pos !==false) 
+                    {
+                        $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
+                        if(count($caracteres) >= 2)
+                        {
+                            $objClasConfiguracionEntidad->decriptUsuario($caracteres[1]);
+                        }
+                        
+                    }
+                    else
+                    {
+                        $pos = strpos ($linea,"Pass");
+                        if($pos !==false) 
+                        {
+                            $caracteres = preg_split('/:/', $linea, -1, PREG_SPLIT_NO_EMPTY);
+                            if(count($caracteres) >= 2)
+                            {
+                                $objClasConfiguracionEntidad->decriptClave($caracteres[1]);
+                            }
+                          
+                        }
+                     }
+                    }
+                }
+            
+                
+            }
+           /* echo $objClasConfiguracionEntidad->obtenerServidor()."</br>";
+            echo $objClasConfiguracionEntidad->obtenerBasedeDatos()."</br>";
+            echo $objClasConfiguracionEntidad->obtenerUsuario()."</br>";
+            echo $objClasConfiguracionEntidad->obtenerClave();*/
+            return $objClasConfiguracionEntidad;
         }
     }
 ?>
