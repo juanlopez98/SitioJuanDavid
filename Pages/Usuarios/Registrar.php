@@ -23,7 +23,7 @@
                                 <div class="col-2">
                                 </div>
                                 <div class="col-8">
-                                    <p class="login-box-msg">Registrar Usuario</p>
+                                    <p class="login-box-msg"><b>REGISTRAR USUARIO </b></p>
                                     <form action="../Business/Configuracion.php" method="POST">
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" placeholder="Nombre de Usuario" id="txtNombreUsuario" name="txtNombreUsuario" maxlength="20" required>
@@ -42,7 +42,7 @@
                                             </div>
                                         </div>
                                         <div class="input-group mb-3">
-                                            <input type="text" class="form-control" placeholder="Segundo Nombre" id="txtSegundoNombre" name="txtSegundoNombre" maxlength="30" required>
+                                            <input type="text" class="form-control" placeholder="Segundo Nombre" id="txtSegundoNombre" name="txtSegundoNombre" maxlength="30" >
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <span class="fas fa-user"></span>
