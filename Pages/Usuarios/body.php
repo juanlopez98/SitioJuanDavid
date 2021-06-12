@@ -1,10 +1,12 @@
 <div class="card-body register-card-body">
+
+
                             <div class="row">
                                 <div class="col-2">
                                 </div>
                                 <div class="col-8">
                                     <p class="login-box-msg"><b>REGISTRAR USUARIO </b></p>
-                                    <form action="../../Business/Usuarios.php" method="POST">
+                                    <form action="../Business/Configuracion.php" method="POST">
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" placeholder="Nombre de Usuario" id="txtNombreUsuario" name="txtNombreUsuario" maxlength="20" required>
                                             <div class="input-group-append">
@@ -77,9 +79,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        
                                         <div class="input-group mb-3">
-                                            <input type="password" class="form-control" placeholder="Password" id="txtPassUsuario" name="txtPassUsuario" maxlength="15" required>
+                                            <input type="text" class="form-control" placeholder="Perfil Usuario" id="txtPerfilUsuario" name="txtPerfilUsuario" maxlength="11" required>
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">
+                                                    <span class="fas  fa-user"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="input-group mb-3">
+                                            <input type="password" class="form-control" placeholder="Password" id="txtPassword" name="txtPassword" maxlength="15" required>
                                             <div class="input-group-append">
                                                 <div class="input-group-text">
                                                     <span class="fas  fa-lock"></span>
@@ -103,8 +112,7 @@
                                             </div>
                                             <div class="col-6">
                                                 <button type="submit" class="btn btn-warning btn-block">Registrar</button>
-                                                <input type="hidden" id="txtOperacion" name="txtOperacion" value="Registrar">
-                                          </div>
+                                            </div>
                                             <div class="col-3">
 
                                             </div>

@@ -25,11 +25,12 @@ class clsAdminBD
       {
           die('Error de conexion: '.$conexion->connect_errno);
       }
-      else
-      {
-      //  echo "conecto de manera exitosa..";
-      }
+       
       return $conexion;
+  }
+  public function desconectar($conexion)
+  {
+      mysqli_close($conexion);
   }
 
 }
